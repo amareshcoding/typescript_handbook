@@ -3,7 +3,8 @@ import './App.css';
 import Counter from './components/Counter';
 import Button from './components/Button';
 import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
-import Todo from './components/Todo';
+import TodoComp from './components/TodoComp';
+import TodoApp from './components/Todo/Todo';
 function App() {
   return (
     <div className="App">
@@ -15,7 +16,8 @@ function App() {
       <Button size="lg">Click me</Button>
       <Button size="md">Click me</Button>
       <Button size="sm">Click me</Button> */}
-      <Todo/>
+      {/* <TodoComp/> */}
+      <TodoApp/>
     </div>
   );
 }

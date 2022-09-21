@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import TodoItem from "./TodoItem";
-import TodoInput from "./TodoInput";
+import TodoItem from './TodoItem';
+import TodoInput from './TodoInput';
 
 type Todo = {
   id: number;
@@ -10,10 +10,10 @@ type Todo = {
 };
 
 const TodoApp = () => {
-  console.log("TodoApp");
+  console.log('TodoApp');
   const [todos, setTodos] = useState<Todo[]>([
-    { id: 1, content: "hello", isCompleted: false },
-    { id: 2, content: "welcome", isCompleted: true },
+    { id: 1, content: 'hello', isCompleted: false },
+    { id: 2, content: 'welcome', isCompleted: true },
   ]);
 
   const onAdd = (content: string) => {
@@ -26,6 +26,19 @@ const TodoApp = () => {
       },
     ]);
   };
+  const toogleStatus = (id: number) => {
+    let newTodos = todos.map((t) => {
+      if (t.id === id) {
+        t.isCompleted = !t.isCompleted;
+      }
+      return t;
+    });
+    setTodos(newTodos);
+  };
+  const deleteTodos = (id: number) => {
+    const remainTodods = todos.filter((t) => t.id !== id);
+    setTodos(remainTodods);
+  };
   return (
     <div>
       Todos : {todos.length}
@@ -33,10 +46,10 @@ const TodoApp = () => {
         <TodoInput onAdd={onAdd} />
       </div>
       {todos.map((todo) => (
-        <TodoItem key={todo.id} {...todo} />
+        <TodoItem key={todo.id} {...todo} toogleStatus={toogleStatus} deleteTodos={deleteTodos} />
       ))}
     </div>
   );
 };
 
-export default TodoApp;
+export default React.memo(TodoApp);

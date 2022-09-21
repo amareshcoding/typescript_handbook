@@ -5,5 +5,12 @@
     { "id": 3, "message": "skjsg" },
     { "id": 4, "message": "skjsg" },
     { "id": 5, "message": "skjsg" }
+  ],
+  "todos": [
+    { "id": 1, "contents": "skjsg", "isDone": "false" },
+    { "id": 2, "contents": "skjsg", "isDone": "false" },
+    { "id": 3, "contents": "skjsg", "isDone": "false" },
+    { "id": 4, "contents": "skjsg", "isDone": "false" },
+    { "id": 5, "contents": "skjsg", "isDone": "false" }
   ]
 }

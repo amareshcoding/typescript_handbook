@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getPosts, Post } from '../actions/action';
 
-const Todo = () => {
+const TodoComp = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   useEffect(() => {
     getPosts().then((d) => {
@@ -20,4 +20,4 @@ const Todo = () => {
   );
 };
 
-export default Todo;
+export default TodoComp;

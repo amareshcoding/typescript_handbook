@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Counter from "./components/Counter";
-import TodoApp from "./components/TodoApp";
-import "./App.css";
+import Counter from './components/Counter';
+import TodoApp from './components/TodoApp';
+import './App.css';
 
 function App() {
+  console.log('App');
+  
   const [answer, setAnswer] = useState<number>();
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState<number>(0);
 
   const fibo = (n: number): number => {
     if (n <= 1) return n;
@@ -14,10 +16,9 @@ function App() {
   };
 
   const calc = () => {
-    console.time("t1");
+    console.time('t1');
     let result = fibo(value);
-    console.timeEnd("t1");
-
+    console.timeEnd('t1');
     setAnswer(result);
   };
   return (

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const Counter = () => {
-  console.log("CounterApp");
+  console.log('CounterApp');
   const [count, setCount] = useState(10);
 
   const increment = (value: number = 1) => setCount(count + value);
@@ -18,4 +18,4 @@ const Counter = () => {
   );
 };
 
-export default Counter;
+export default React.memo(Counter);
