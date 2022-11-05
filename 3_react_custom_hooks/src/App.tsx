@@ -3,10 +3,11 @@ import Stopwatch from './components/Stopwatch';
 // import usePost from './hooks/usePost';
 import { getPosts, Post } from './action';
 import { useEffect, useState } from 'react';
+import Form from './components/Form';
 
 function App() {
   const [page, setPage] = useState<number>(1);
-  
+
   // const { post, loading, error, execute } = usePost<Post[]>(getPosts, dontExecuteOnMount: true);
 
   // useEffect(()=>{
@@ -21,7 +22,7 @@ function App() {
   // }
   return (
     <div className="App">
-      <Stopwatch />
+      {/* <Stopwatch /> */}
       {/* <h1>POST</h1>
       {post.map((p: Post) => (
         <div>
@@ -30,6 +31,7 @@ function App() {
           <button onClick={() => setPage((prev) => prev + 1)}>Next</button>
         </div>
       ))} */}
+      <Form />
     </div>
   );
 }

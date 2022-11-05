@@ -8,7 +8,7 @@ export type TodoType = {
   isDone: boolean;
 };
 export const addTodo = (data: TodoType) => ({ type: ADD_TODO, payload: data });
-export const deleteTodo = (_id: string) => ({ type: ADD_TODO, payload: _id });
-export const toggleTodo = (_id: string) => ({ type: ADD_TODO, payload: _id });
+export const deleteTodo = (_id: string) => ({ type: DELETE_TODO, payload: _id });
+export const toggleTodo = (_id: string) => ({ type: TOGGLE_TODO, payload: _id });
 
 // 	dispatch: Dispatch<ProjectDispatchHandler>

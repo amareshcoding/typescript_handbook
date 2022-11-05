@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "../3_react_custom_hooks/src/components/Form.tsx", "../3_react_custom_hooks/src/hooks/useMergeState.tsx", "../3_react_custom_hooks/src/components/Form.tsx"  ]
 }
