@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import { nanoid } from 'nanoid';
 
 export type Post = {
   id: number;
@@ -16,7 +17,7 @@ export const getPosts = async () => {
 };
 
 export type Todo = {
-  id: number;
+  id: string;
   content: string;
   isDone: boolean;
 };
@@ -25,23 +26,21 @@ export const getTodos = async () => {
     const res: AxiosResponse<Todo[]> = await axios.get(
       'http://localhost:8080/todos'
     );
-
     return res.data;
   } catch (e) {
     console.log('e: ', e);
   }
 };
 
-type todoParams = {
-  id: number;
-  content: string;
-  isDone: boolean;
-};
-export const postTodos = async (params: todoParams) => {
+export const postTodos = async (content: string) => {
   try {
     const res: AxiosResponse<Todo> = await axios.post(
       'http://localhost:8080/todos',
-      params
+      {
+        id: nanoid(),
+        content: content,
+        isDone: false,
+      }
     );
 
     return res.data;
@@ -51,7 +50,7 @@ export const postTodos = async (params: todoParams) => {
 };
 
 type patchTodo = {
-  id?: number;
+  id?: string;
   content?: string;
   isDone?: boolean;
 };
@@ -68,7 +67,7 @@ export const patchTodos = async (id: todoId, patchData: patchTodo) => {
 };
 
 type todoId = {
-  id: number;
+  id: string;
 };
 export const removeTodos = async (id: todoId) => {
   try {

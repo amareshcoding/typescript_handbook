@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { AiFillForward } from 'react-icons/ai';
 type ButtonProps = {
   children: string;
   size?: 'xs' | 'sm' | 'md' | 'lg';
@@ -64,6 +64,7 @@ const Button = ({
         {children}
         {iconRight}
       </button>
+      {/* <button > {<AiFillForward />} Next {<AiFillForward />}</button> */}
     </div>
   );
 };

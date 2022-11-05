@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+
 const useStopwatch = (initialValue: number) => {
   const timeId = useRef<any>(null);
   const [time, setTime] = useState<number>(initialValue);

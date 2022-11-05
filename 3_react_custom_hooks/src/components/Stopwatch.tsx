@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react';
 import useStopwatch from '../hooks/useStopwatch';
 
 type StopwatchProps = {
@@ -6,6 +7,7 @@ type StopwatchProps = {
 
 const Stopwatch = ({ initialValue = 100 }: StopwatchProps) => {
   const { time, start, pause, reset } = useStopwatch(initialValue);
+
   return (
     <div>
       <h1>StopWatch</h1>

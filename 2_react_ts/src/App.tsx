@@ -9,15 +9,15 @@ function App() {
   return (
     <div className="App">
       {/* <Counter /> */}
-      {/* <Button iconLeft={<AiFillCaretLeft />} iconRight={<AiFillCaretRight />}>
+      <Button iconLeft={<AiFillCaretLeft />} iconRight={<AiFillCaretRight />}>
         Click me
       </Button>
       <Button size="xs">Click me</Button>
       <Button size="lg">Click me</Button>
       <Button size="md">Click me</Button>
-      <Button size="sm">Click me</Button> */}
+      <Button size="sm">Click me</Button>
       {/* <TodoComp/> */}
-      <TodoApp/>
+      {/* <TodoApp/> */}
     </div>
   );
 }

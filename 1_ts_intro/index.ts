@@ -85,10 +85,12 @@ interface result {
   y: string;
 }
 //
-const sumcat: Function = (a: arg, b: arg): result => ({
-  x: a.x + b.x,
-  y: `${a.y}${b.y}`,
-});
+const sumcat: Function = (a: arg, b: arg): result => {
+  return {
+    x: a.x + b.x,
+    y: `${a.y + b.y}`,
+  };
+};
 
 console.log(sumcat({ x: 1, y: 2 }, { x: 2, y: 2 }));
 
@@ -115,7 +117,7 @@ const fn1 = (): any => {
 //topel - TypeScript introduced a new data type called Tuple.
 //Tuple can contain two values of different data types.
 //Tuple type variable
-var employee: [number, string] = [1, 'Steve'];
+var employee: [number, string] = [1, 'Steve', ];
 var user: [number, string, boolean, number, string]; // declare tuple variable
 user = [1, 'Steve', true, 20, 'Admin'];
 
@@ -278,7 +280,7 @@ type U = {
   name: string;
   age?: number; //optional field
   email: string;
-  gender: Gender; //enum field
+  gender: Gender ; //enum field
 };
 let User5: Array<U> = [
   {
@@ -341,7 +343,6 @@ const Ar1: [] = [];
 
 // const car1 = new Car("duster", "renault");
 
-
 //Generic
 //
 interface Teacher1 {
@@ -372,6 +373,3 @@ const sortByKey1 = <T>(arr: T[], key: keyof T): T[] => {
 };
 const res3 = sortByKey<Teacher>(teachers, 'name');
 console.log('res1: ', res1);
-
-
-

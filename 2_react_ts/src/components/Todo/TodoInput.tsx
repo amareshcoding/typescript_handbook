@@ -16,7 +16,7 @@ const TodoInput = ({ addNewTodo }: todoInputProps) => {
       <input type="text" value={v} onChange={onChange} />
       <button
         onClick={() => {
-          addNewTodo();
+          addNewTodo(v);
         }}
       >
         Add
