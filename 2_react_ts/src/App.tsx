@@ -5,7 +5,7 @@ import Button from './components/Button';
 import { AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai';
 import TodoComp from './components/TodoComp';
 import TodoApp from './components/Todo/Todo';
-import Form from '../../3_react_custom_hooks/src/components/Form';
+
 function App() {
   return (
     <div className="App">
@@ -19,7 +19,6 @@ function App() {
       <Button size="sm">Click me</Button> */}
       {/* <TodoComp/> */}
       {/* <TodoApp/> */}
-      <Form/>
     </div>
   );
 }
