@@ -26,19 +26,19 @@ export const todoReducer = (
       );
       return {
         ...state,
-        todo: updateTodo,
+        todos: updateTodo,
       };
     }
     case TOGGLE_TODO: {
       let updateTodo: TodoType[] = state.todos.map((todo: TodoType) => {
-        if (todo._id !== payload) {
+        if (todo._id === payload) {
           todo.isDone = !todo.isDone;
         }
         return todo;
       });
       return {
         ...state,
-        todo: updateTodo,
+        todos: updateTodo,
       };
     }
     default: {

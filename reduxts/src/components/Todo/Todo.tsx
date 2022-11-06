@@ -7,7 +7,7 @@ import { TodoType } from '../../redux/todo/action.todo';
 
 const Todo = () => {
   const { todos = [] } = useSelector((store: RootReducer) => store.todo);
-  console.log('todos: ', todos);
+
   return (
     <div>
       Todo

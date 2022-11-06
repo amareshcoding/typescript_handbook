@@ -1,13 +1,21 @@
 import React from 'react';
-import { TodoType } from '../../redux/todo/action.todo';
+import { useDispatch } from 'react-redux';
+import { deleteTodo, TodoType, toggleTodo } from '../../redux/todo/action.todo';
 
-const TodoList = ({ text, isDone }: TodoType) => {
+const TodoList = ({ _id, text, isDone }: TodoType) => {
+  const dispatch = useDispatch();
+
   return (
     <div>
-      <h3>Content: {text}</h3>
-      <h4>Status: {isDone}</h4>
-      <button>toggle</button>
-      <button>delete</button>
+      <h4 style={{ display: 'inline' }}>{`${text} -`}</h4>
+      <h4 style={{ display: 'inline' }}>
+        {isDone ? ' completed' : ' pending'}
+      </h4>
+
+      <div>
+        <button onClick={() => dispatch(toggleTodo(_id))}>TOOGLE</button>
+        <button onClick={() => dispatch(deleteTodo(_id))}>DELETE</button>
+      </div>
     </div>
   );
 };
