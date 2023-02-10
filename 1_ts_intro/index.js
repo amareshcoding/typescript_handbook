@@ -1,7 +1,7 @@
 //typescript
-//command: tsc index.js
-//command: tsc index.js --watch
-//command: npx tsc index.js
+//command: tsc index.ts
+//command: tsc index.ts --watch
+//command: npx tsc index.ts
 var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
         if (ar || !(i in from)) {
@@ -51,11 +51,12 @@ var g1 = [{ a: 1 }, { a: 2, b: '', c: 1 }, { a: 3, b: '', c: '' }];
 var sum = function (a, b) { return a + b; };
 var sub = function (a, b) { return Math.abs(a - b); };
 var g2 = [{ a: 1 }, { a: 2, b: '', c: 1 }, { a: 3, b: '', c: '' }];
-//
-var sumcat = function (a, b) { return ({
-    x: a.x + b.x,
-    y: "".concat(a.y).concat(b.y)
-}); };
+var sumcat = function (a, b) {
+    return {
+        x: a.x + b.x,
+        y: "".concat(a.y + b.y)
+    };
+};
 console.log(sumcat({ x: 1, y: 2 }, { x: 2, y: 2 }));
 //any- if you dont know the return type
 var fn1 = function () {
@@ -65,9 +66,8 @@ var fn1 = function () {
 // const fn2 = (): void => {
 //   console.log('print');
 // };
-//topel - TypeScript introduced a new data type called Tuple.
-//Tuple can contain two values of different data types.
-//Tuple type variable
+//tuple - A tuple in TypeScript is a data structure that allows you to store a collection of values with different types.
+//tuples are fixed in size and you cannot dynamically add or remove elements from a tuple.
 var employee = [1, 'Steve'];
 var user; // declare tuple variable
 user = [1, 'Steve', true, 20, 'Admin'];
@@ -76,11 +76,21 @@ var user1 = [
     { name: 'B', age: 20, occupation: 'jdf' },
     { name: 'C', age: 27, occupation: 'jdf' },
 ];
+//keyof Interface
 var sortBay = function (arr, key) {
     var result = arr.sort(function (a, b) {
         return a[key] < b[key] ? -1 : 1;
     });
     return result;
+};
+sortBay(user1, 'name');
+var p2 = {
+    name: 'Amaresh',
+    age: 25,
+    roll: '',
+    phone: 1122,
+    occupation: '',
+    address: ''
 };
 var p1 = {
     name: 'Amaresh',
@@ -89,14 +99,6 @@ var p1 = {
     phone: 1122,
     occupation: '',
     extra: ''
-};
-var p2 = {
-    name: 'Amaresh',
-    age: 25,
-    roll: '',
-    phone: 1122,
-    occupation: '',
-    address: ''
 };
 var teachers = [
     { name: 'b', age: 20, id: '1' },
@@ -117,10 +119,28 @@ var res1 = sortByKey(teachers, 'name');
 console.log('res1: ', res1);
 var res2 = sortByKey(students, 'roll');
 console.log('res2: ', res2);
-//
-//
-//
-//
+//Record
+// In TypeScript, the Record type is a way to create an object
+// type with a set of properties, where the keys of the properties
+// are of a specific type, and the values of the properties are of another specific type.
+var p4 = {
+    loading: true,
+    error: false
+};
+//enum
+var GenderTypes;
+(function (GenderTypes) {
+    GenderTypes[GenderTypes["Male"] = 0] = "Male";
+    GenderTypes[GenderTypes["Female"] = 1] = "Female";
+})(GenderTypes || (GenderTypes = {}));
+var newUser = [
+    {
+        name: 'Mr. A',
+        age: 30,
+        email: 'a@a.com',
+        gender: GenderTypes.Male
+    },
+];
 //WEB_19
 var n = 12;
 var s = 'str';
@@ -136,11 +156,6 @@ var p3 = {
     loading: true,
     error: false,
     data: []
-};
-//Record
-var p4 = {
-    loading: true,
-    error: false
 };
 //Array of Objects
 var arrOfObj = [
@@ -207,16 +222,20 @@ if (typeof n4 === 'number') {
 //void - return undefined
 //never - code break | internal error | throw Error
 var Ar1 = [];
-// Ar1.push(8) //Error
-//class
-// class Car{
-//   constructor(n,b){
-//        this.name = n;
-//        this.wheels = 4;
-//        this.brand = b;
-//   }
-//   printName(){
-//        console.log(this.name);
-//   }
-// }
-// const car1 = new Car("duster", "renault");
+var teachers1 = [
+    { name: 'b', age: 20, id: '1' },
+    { name: 'a', age: 30, id: '2' },
+    { name: 'c', age: 40, id: '3' },
+];
+var students1 = [
+    { name: 'Aa', age: 20, roll: '3' },
+    { name: 'Ab', age: 10, roll: '1' },
+    { name: 'Ac', age: 15, roll: '2' },
+];
+//generic
+var sortByKey1 = function (arr, key) {
+    var typeOfKey = typeof key;
+    return __spreadArray([], arr, true).sort(function (a, b) { return (a[key] > b[key] ? 1 : -1); });
+};
+var res3 = sortByKey(teachers, 'name');
+console.log('res1: ', res1);

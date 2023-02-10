@@ -1,7 +1,7 @@
 //typescript
-//command: tsc index.js
-//command: tsc index.js --watch
-//command: npx tsc index.js
+//command: tsc index.ts
+//command: tsc index.ts --watch
+//command: npx tsc index.ts
 
 //dayatypes in Js?
 //number
@@ -79,12 +79,13 @@ interface arg {
   x: number;
   y: number;
 }
+
 //RESULT INTERFACE
 interface result {
   x: number;
   y: string;
 }
-//
+
 const sumcat: Function = (a: arg, b: arg): result => {
   return {
     x: a.x + b.x,
@@ -97,7 +98,7 @@ console.log(sumcat({ x: 1, y: 2 }, { x: 2, y: 2 }));
 //CAR INTERFACE
 interface Car {
   wheels: 4 | 6;
-  engine: 'v8' | 'v6';
+  engine: 'v8' | 'v6'; //String literal
   stearing: 'a' | 'b';
   doors: 4;
 }
@@ -114,14 +115,12 @@ const fn1 = (): any => {
 //   console.log('print');
 // };
 
-//topel - TypeScript introduced a new data type called Tuple.
-//Tuple can contain two values of different data types.
-//Tuple type variable
-var employee: [number, string] = [1, 'Steve', ];
+//tuple - A tuple in TypeScript is a data structure that allows you to store a collection of values with different types.
+//tuples are fixed in size and you cannot dynamically add or remove elements from a tuple.
+var employee: [number, string] = [1, 'Steve'];
 var user: [number, string, boolean, number, string]; // declare tuple variable
 user = [1, 'Steve', true, 20, 'Admin'];
 
-//
 interface User2 {
   name: string;
   age: number;
@@ -133,12 +132,14 @@ const user1: User2[] = [
   { name: 'C', age: 27, occupation: 'jdf' },
 ];
 
+//keyof Interface
 const sortBay = (arr: User2[], key: keyof User2): User2[] => {
   let result = arr.sort((a, b) => {
     return a[key] < b[key] ? -1 : 1;
   });
   return result;
 };
+sortBay(user1, 'name');
 
 //inheritance
 interface User1 {
@@ -150,7 +151,21 @@ interface Admin1 {
   phone: number;
   occupation: string;
 }
-//type
+
+//extends
+interface Person1 extends User1, Admin1 {
+  address: string;
+}
+let p2: Person1 = {
+  name: 'Amaresh',
+  age: 25,
+  roll: '',
+  phone: 1122,
+  occupation: '',
+  address: '',
+};
+
+//type inheritance
 type Person = User1 &
   Admin1 & {
     extra: string;
@@ -164,19 +179,8 @@ let p1: Person = {
   extra: '',
 };
 //
-interface Person1 extends User1, Admin1 {
-  address: string;
-}
-let p2: Person1 = {
-  name: 'Amaresh',
-  age: 25,
-  roll: '',
-  phone: 1122,
-  occupation: '',
-  address: '',
-};
 
-//
+//Generic
 interface Teacher {
   name: string;
   age: number;
@@ -207,10 +211,37 @@ const res1 = sortByKey<Teacher>(teachers, 'name');
 console.log('res1: ', res1);
 const res2 = sortByKey<Student>(students, 'roll');
 console.log('res2: ', res2);
-//
-//
-//
-//
+
+//Record
+// In TypeScript, the Record type is a way to create an object
+// type with a set of properties, where the keys of the properties
+// are of a specific type, and the values of the properties are of another specific type.
+let p4: Record<string, boolean> = {
+  loading: true,
+  error: false,
+};
+
+//enum
+enum GenderTypes {
+  'Male',
+  'Female',
+}
+type UsersType = {
+  name: string;
+  age?: number; //optional field
+  email: string;
+  gender: GenderTypes; //enum field
+};
+
+let newUser: Array<UsersType> = [
+  {
+    name: 'Mr. A',
+    age: 30,
+    email: 'a@a.com',
+    gender: GenderTypes.Male,
+  },
+];
+
 //WEB_19
 let n: number = 12;
 let s: string = 'str';
@@ -233,12 +264,6 @@ let p3: {
   loading: true,
   error: false,
   data: [],
-};
-
-//Record
-let p4: Record<string, boolean> = {
-  loading: true,
-  error: false,
 };
 
 //Array of Objects
@@ -280,7 +305,7 @@ type U = {
   name: string;
   age?: number; //optional field
   email: string;
-  gender: Gender ; //enum field
+  gender: Gender; //enum field
 };
 let User5: Array<U> = [
   {
