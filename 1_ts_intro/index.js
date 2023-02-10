@@ -11,6 +11,8 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
+//command: npm init -y
+//command: tsc --init
 //dayatypes in Js?
 //number
 //string
@@ -214,6 +216,7 @@ n4 = 10;
 n4 = 'str';
 var n5;
 n5 = n3;
+console.log('n5: ', n5);
 // n5 = n4; //Type 'unknow' is not assignable to type number
 if (typeof n4 === 'number') {
     n5 = n4;

@@ -1,3 +1,8 @@
 {
-     "target":"ESN"
+  "compilerOptions": {
+    "target": "ES6",
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
 }

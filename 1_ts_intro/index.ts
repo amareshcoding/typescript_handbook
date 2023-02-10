@@ -3,6 +3,10 @@
 //command: tsc index.ts --watch
 //command: npx tsc index.ts
 
+//command: npm init -y
+//command: tsc --init
+//Configure tsconfig.json file
+
 //dayatypes in Js?
 //number
 //string
@@ -133,6 +137,7 @@ const user1: User2[] = [
 ];
 
 //keyof Interface
+//The keyof operator takes an object type and produces a string or numeric literal union of its keys
 const sortBay = (arr: User2[], key: keyof User2): User2[] => {
   let result = arr.sort((a, b) => {
     return a[key] < b[key] ? -1 : 1;
@@ -203,6 +208,7 @@ let students: Student[] = [
 ];
 
 //generic
+// An Art of designing re-usable functions in Typescript, where we pass type along with
 const sortByKey = <T>(arr: T[], key: keyof T): T[] => {
   const typeOfKey = typeof key;
   return [...arr].sort((a, b) => (a[key] > b[key] ? 1 : -1));
@@ -222,6 +228,9 @@ let p4: Record<string, boolean> = {
 };
 
 //enum
+// Enums are one of the few features TypeScript has which is not a type-level extension of JavaScript.
+// Enums allow a developer to define a set of named constants. Using enums can make it easier to document intent, or create a set of distinct cases. 
+//TypeScript provides both numeric and string-based enums.
 enum GenderTypes {
   'Male',
   'Female',
@@ -241,6 +250,10 @@ let newUser: Array<UsersType> = [
     gender: GenderTypes.Male,
   },
 ];
+
+//Type aliases and interfaces are very similar, and in many cases you can choose between them freely. 
+//Almost all features of an interface are available in type, 
+//the key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable.
 
 //WEB_19
 let n: number = 12;
@@ -343,6 +356,7 @@ n4 = 10;
 n4 = 'str';
 let n5: number;
 n5 = n3;
+console.log('n5: ', n5);
 // n5 = n4; //Type 'unknow' is not assignable to type number
 if (typeof n4 === 'number') {
   n5 = n4;
