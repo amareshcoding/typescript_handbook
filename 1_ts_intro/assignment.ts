@@ -3,13 +3,14 @@ const age: number = 30;
 const isFetching: boolean = true;
 
 const arr2: Array<number> = [1, 2, 3];
+const arr1: Array<string | boolean | number> = ['', true, 8, false, 9];
 
 //Tuples
-const arr1: Array<string | boolean | number> = ['', true, 8];
+const arr3: [number, string, boolean] = [4, 'str', true];
 
 //enum
 enum CardinalDirections {
-  User = 'User',
+  User = 'User1',
   SuperUser = 'SuperUser',
   Admin = 'Admin',
   SuperAdmin = 'SuperAdmin',
@@ -48,12 +49,10 @@ interface Obj {
 // keep lastname optional.
 // if lastname does not exist then return only firstname
 // make a interface for it
-const getName = (a: string, b: string): string => {
-  if (b) {
-    return `${a} ${b}`;
-  } else return `${a}`;
+const getName = (firstName: string, lastName: string): string => {
+  return `${firstName} ${lastName}`;
 };
-
+const fullName = getName('Amaresh', 'Barik');
 // create an interface Address
 // it takes
 // houseNumber
@@ -93,9 +92,9 @@ interface PersonDetails {
 // it should accept PersonDetails type argument
 // create an array of objects outside the PhoneBook function, that is expecting PersonDetails objects.
 // Push the PersonDetails object in the array, from the function.
-const arrOfObj: Array<PersonDetails> = [];
+const arrOfObj1: Array<PersonDetails> = [];
 const PhoneBook: Function = (arg: PersonDetails): void => {
-  arrOfObj.push(arg);
+  arrOfObj1.push(arg);
 };
 
 // Write a function to retrieve the type of the user or admin
@@ -121,7 +120,3 @@ const u: User = {
   occupation: '',
 };
 console.log(u.type);
-
-
-
-

@@ -1,16 +1,8 @@
+"use strict";
 //typescript
 //command: tsc index.ts
 //command: tsc index.ts --watch
 //command: npx tsc index.ts
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 //command: npm init -y
 //command: tsc --init
 //Configure tsconfig.json file
@@ -23,53 +15,53 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 //array Array<>
 //object {}
 //number
-var num = 10;
+const num = 10;
 //string
-var str = 'str';
+const str = 'str';
 //boolean
-var isDone = true;
+const isDone = true;
 //add two number
-var x = 4;
-var y = 5;
+const x = 4;
+const y = 5;
 console.log(x + y);
 //block scope variable
 {
-    var obj = { a: 1 };
+    let obj = { a: 1 };
 }
 //Array
-var b = [1, 3, 4];
-var c = [true, 'c', 1];
+let b = [1, 3, 4];
+let c = [true, 'c', 1];
 //Array of Objects
-var d = [
+let d = [
     { id: 1, name: 'amaresh' },
     { id: 2, name: 'amaresh' },
 ];
-var e = [{ a: 10 }, true];
+let e = [{ a: 10 }, true];
 //Object
-var f = {
+let f = {
     x: 1,
     y: 'str',
-    z: [1, 2, 3]
+    z: [1, 2, 3],
 };
 //Array of different values
-var g1 = [{ a: 1 }, { a: 2, b: '', c: 1 }, { a: 3, b: '', c: '' }];
+let g1 = [{ a: 1 }, { a: 2, b: '', c: 1 }, { a: 3, b: '', c: '' }];
 //function
-var sum = function (a, b) { return a + b; };
-var sub = function (a, b) { return Math.abs(a - b); };
-var g2 = [{ a: 1 }, { a: 2, b: '', c: 1 }, { a: 3, b: '', c: '' }];
-var sumcat = function (a, b) {
+const sum = (a, b) => a + b;
+const sub = (a, b) => Math.abs(a - b);
+let g2 = [{ a: 1 }, { a: 2, b: '', c: 1 }, { a: 3, b: '', c: '' }];
+const sumcat = (a, b) => {
     return {
         x: a.x + b.x,
-        y: "".concat(a.y + b.y)
+        y: `${a.y + b.y}`,
     };
 };
 console.log(sumcat({ x: 1, y: 2 }, { x: 2, y: 2 }));
 //any- if you dont know the return type
-var fn1 = function () {
+const fn1 = () => {
     console.log('print');
 };
 //void- if a function returns nothing
-var fn2 = function () {
+const fn2 = () => {
     console.log('print');
 };
 //tuple - A tuple in TypeScript is a data structure that allows you to store a collection of values with different types.
@@ -77,63 +69,63 @@ var fn2 = function () {
 var employee = [1, 'Steve'];
 var user; // declare tuple variable
 user = [1, 'Steve', true, 20, 'Admin'];
-var user1 = [
+const user1 = [
     { name: 'A', age: 23, occupation: 'jdf' },
     { name: 'B', age: 20, occupation: 'jdf' },
     { name: 'C', age: 27, occupation: 'jdf' },
 ];
 //keyof Interface
 //The keyof operator takes an object type and produces a string or numeric literal union of its keys
-var sortBay = function (arr, key) {
-    var result = arr.sort(function (a, b) {
+const sortBay = (arr, key) => {
+    let result = arr.sort((a, b) => {
         return a[key] < b[key] ? -1 : 1;
     });
     return result;
 };
 sortBay(user1, 'name');
-var p2 = {
+let p2 = {
     name: 'Amaresh',
     age: 25,
     roll: '',
     phone: 1122,
     occupation: '',
-    address: ''
+    address: '',
 };
-var p1 = {
+let p1 = {
     name: 'Amaresh',
     age: 25,
     roll: '',
     phone: 1122,
     occupation: '',
-    extra: ''
+    extra: '',
 };
-var teachers = [
+let teachers = [
     { name: 'b', age: 20, id: '1' },
     { name: 'a', age: 30, id: '2' },
     { name: 'c', age: 40, id: '3' },
 ];
-var students = [
+let students = [
     { name: 'Aa', age: 20, roll: '3' },
     { name: 'Ab', age: 10, roll: '1' },
     { name: 'Ac', age: 15, roll: '2' },
 ];
 //generic
 // An Art of designing re-usable functions in Typescript, where we pass type along with function call
-var sortByKey = function (arr, key) {
-    var typeOfKey = typeof key;
-    return __spreadArray([], arr, true).sort(function (a, b) { return (a[key] > b[key] ? 1 : -1); });
+const sortByKey = (arr, key) => {
+    const typeOfKey = typeof key;
+    return [...arr].sort((a, b) => (a[key] > b[key] ? 1 : -1));
 };
-var res1 = sortByKey(teachers, 'name');
+const res1 = sortByKey(teachers, 'name');
 console.log('res1: ', res1);
-var res2 = sortByKey(students, 'roll');
+const res2 = sortByKey(students, 'roll');
 console.log('res2: ', res2);
 //Record
 // In TypeScript, the Record type is a way to create an object
 // type with a set of properties, where the keys of the properties
 // are of a specific type, and the values of the properties are of another specific type.
-var p4 = {
+let p4 = {
     loading: true,
-    error: false
+    error: false,
 };
 //enum
 // Enums are one of the few features TypeScript has which is not a type-level extension of JavaScript.
@@ -144,46 +136,46 @@ var GenderTypes;
     GenderTypes[GenderTypes["Male"] = 0] = "Male";
     GenderTypes[GenderTypes["Female"] = 1] = "Female";
 })(GenderTypes || (GenderTypes = {}));
-var newUser = [
+let newUser = [
     {
         name: 'Mr. A',
         age: 30,
         email: 'a@a.com',
-        gender: GenderTypes.Male
+        gender: GenderTypes.Male,
     },
 ];
 //Type aliases and interfaces are very similar, and in many cases you can choose between them freely.
 //Almost all features of an interface are available in type,
 //the key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable.
 //WEB_19
-var n = 12;
-var s = 'str';
-var bl = false;
-var nl = null;
+let n = 12;
+let s = 'str';
+let bl = false;
+let nl = null;
 //Array
-var arr19 = ['str1', 'str2'];
-var arr191 = ['str1', 'str2'];
+let arr19 = ['str1', 'str2'];
+let arr191 = ['str1', 'str2'];
 //Union - any amoung these
-var marr = [2, 'str', [1, 3]];
+let marr = [2, 'str', [1, 3]];
 //Object
-var p3 = {
+let p3 = {
     loading: true,
     error: false,
-    data: []
+    data: [],
 };
 //Array of Objects
-var arrOfObj = [
+let arrOfObj = [
     { name: 'Mr. A', age: 40, place: 'India' },
     { name: 'Mr. B', age: 50, place: 'USA' },
 ];
 //function
-var add = function (a, b) {
+const add = (a, b) => {
     return a + b;
 };
 add(2, 4);
 //Literal Type - defaulty value
-var country = ['INDIA', 'CHINA'];
-var country1 = ['INDIA', 'CHINA'];
+let country = ['INDIA', 'CHINA'];
+let country1 = ['INDIA', 'CHINA'];
 //optional value
 //enum
 var UserType;
@@ -198,12 +190,12 @@ var Gender;
     Gender[Gender["Male"] = 0] = "Male";
     Gender[Gender["Female"] = 1] = "Female";
 })(Gender || (Gender = {}));
-var User5 = [
+let User5 = [
     {
         userType: UserType.Admin,
         age: 30,
         email: 'a@a.com',
-        gender: Gender.Male
+        gender: Gender.Male,
     },
     // {
     //   name: 'Mr. A',
@@ -211,22 +203,22 @@ var User5 = [
     //   gender: Gender.Male,
     // },
 ];
-var Ar = [
+let Ar = [
     ['a', 1],
     ['b', 2],
 ];
 //Void
-var sub1 = function (a, b) {
+const sub1 = (a, b) => {
     console.log('sub:', Math.abs(a - b));
 };
 //any | unknow - any value
-var n3;
+let n3;
 n3 = 10;
 n3 = 'str';
-var n4;
+let n4;
 n4 = 10;
 n4 = 'str';
-var n5;
+let n5;
 n5 = n3;
 console.log('n5: ', n5);
 // n5 = n4; //Type 'unknow' is not assignable to type number
@@ -236,32 +228,32 @@ if (typeof n4 === 'number') {
 //never | void
 //void - return undefined
 //never - code break | internal error | throw Error
-var Ar1 = [];
-var teachers1 = [
+const Ar1 = [];
+let teachers1 = [
     { name: 'b', age: 20, id: '1' },
     { name: 'a', age: 30, id: '2' },
     { name: 'c', age: 40, id: '3' },
 ];
-var students1 = [
+let students1 = [
     { name: 'Aa', age: 20, roll: '3' },
     { name: 'Ab', age: 10, roll: '1' },
     { name: 'Ac', age: 15, roll: '2' },
 ];
 //generic
-var sortByKey1 = function (arr, key) {
-    var typeOfKey = typeof key;
-    return __spreadArray([], arr, true).sort(function (a, b) { return (a[key] > b[key] ? 1 : -1); });
+const sortByKey1 = (arr, key) => {
+    const typeOfKey = typeof key;
+    return [...arr].sort((a, b) => (a[key] > b[key] ? 1 : -1));
 };
-var res3 = sortByKey(teachers, 'name');
+const res3 = sortByKey(teachers, 'name');
 function login(cred) {
     console.log(cred);
 }
-var cred1 = { username: 'abc@test.com', password: 'secret' };
+const cred1 = { username: 'abc@test.com', password: 'secret' };
 login(cred1);
-var auth = {
+const auth = {
     username: 'abc@test.com',
     password: 'secret',
-    login: function (username, password) { }
+    login(username, password) { },
 };
 //inference: variable automatic taking type of assigned value
 console.log('hello world');

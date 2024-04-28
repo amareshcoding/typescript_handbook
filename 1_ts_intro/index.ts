@@ -17,20 +17,20 @@
 //object {}
 
 //number
-var num: number = 10;
+const num: number = 10;
 //string
-var str: string = 'string';
+const str: string = 'str';
 //boolean
-var isDone: boolean = true;
+const isDone: boolean = true;
 
 //add two number
-var x: number = 4;
-var y: number = 5;
+const x: number = 4;
+const y: number = 5;
 console.log(x + y);
 
 //block scope variable
 {
-  let a: { a: number } = { a: 1 };
+  let obj: { a: number } = { a: 1 };
 }
 
 //Array
@@ -41,7 +41,10 @@ let c: Array<boolean | string | number> = [true, 'c', 1];
 let d: Array<{
   id: number;
   name: string;
-}> = [{ id: 1, name: 'amaresh' }];
+}> = [
+  { id: 1, name: 'amaresh' },
+  { id: 2, name: 'amaresh' },
+];
 let e: Array<{ a: number } | boolean> = [{ a: 10 }, true];
 
 //Object
@@ -63,9 +66,9 @@ let g1: Array<{
 }> = [{ a: 1 }, { a: 2, b: '', c: 1 }, { a: 3, b: '', c: '' }];
 
 //function
-const sum: Function = (a: number, b: number) => a + b;
+const sum: Function = (a: number, b: number): number => a + b;
 
-const sub: Function = (a: number, b: number) => Math.abs(a - b);
+const sub: Function = (a: number, b: number): number => Math.abs(a - b);
 
 // console.log(sum(3, 5));
 // console.log(sub(8, 5));
@@ -115,9 +118,9 @@ const fn1 = (): any => {
   console.log('print');
 };
 //void- if a function returns nothing
-// const fn2 = (): void => {
-//   console.log('print');
-// };
+const fn2 = (): void => {
+  console.log('print');
+};
 
 //tuple - A tuple in TypeScript is a data structure that allows you to store a collection of values with different types.
 //tuples are fixed in size and you cannot dynamically add or remove elements from a tuple.
@@ -157,7 +160,7 @@ interface Admin1 {
   occupation: string;
 }
 
-//extends
+//extends: interface inheritance
 interface Person1 extends User1, Admin1 {
   address: string;
 }
@@ -208,7 +211,7 @@ let students: Student[] = [
 ];
 
 //generic
-// An Art of designing re-usable functions in Typescript, where we pass type along with
+// An Art of designing re-usable functions in Typescript, where we pass type along with function call
 const sortByKey = <T>(arr: T[], key: keyof T): T[] => {
   const typeOfKey = typeof key;
   return [...arr].sort((a, b) => (a[key] > b[key] ? 1 : -1));
@@ -229,7 +232,7 @@ let p4: Record<string, boolean> = {
 
 //enum
 // Enums are one of the few features TypeScript has which is not a type-level extension of JavaScript.
-// Enums allow a developer to define a set of named constants. Using enums can make it easier to document intent, or create a set of distinct cases. 
+// Enums allow a developer to define a set of named constants. Using enums can make it easier to document intent, or create a set of distinct cases.
 //TypeScript provides both numeric and string-based enums.
 enum GenderTypes {
   'Male',
@@ -241,6 +244,12 @@ type UsersType = {
   email: string;
   gender: GenderTypes; //enum field
 };
+interface UsersType1 {
+  name: string;
+  age?: number; //optional field
+  email: string;
+  gender: GenderTypes; //enum field
+}
 
 let newUser: Array<UsersType> = [
   {
@@ -251,8 +260,8 @@ let newUser: Array<UsersType> = [
   },
 ];
 
-//Type aliases and interfaces are very similar, and in many cases you can choose between them freely. 
-//Almost all features of an interface are available in type, 
+//Type aliases and interfaces are very similar, and in many cases you can choose between them freely.
+//Almost all features of an interface are available in type,
 //the key distinction is that a type cannot be re-opened to add new properties vs an interface which is always extendable.
 
 //WEB_19
@@ -290,7 +299,7 @@ let arrOfObj: Array<{
 ];
 
 //function
-const add = (a: number, b: number): number => {
+const add: Function = (a: number, b: number): number => {
   return a + b;
 };
 add(2, 4);
@@ -315,14 +324,14 @@ enum Gender {
   'Female',
 }
 type U = {
-  name: string;
+  userType: UserType;
   age?: number; //optional field
   email: string;
   gender: Gender; //enum field
 };
 let User5: Array<U> = [
   {
-    name: 'Mr. A',
+    userType: UserType.Admin,
     age: 30,
     email: 'a@a.com',
     gender: Gender.Male,
@@ -369,18 +378,18 @@ const Ar1: [] = [];
 // Ar1.push(8) //Error
 
 //class
-// class Car{
-//   constructor(n,b){
-//        this.name = n;
-//        this.wheels = 4;
-//        this.brand = b;
+// class Car {
+//   constructor(n, b) {
+//     this.name = n;
+//     this.wheels = 4;
+//     this.brand = b;
 //   }
-//   printName(){
-//        console.log(this.name);
+//   printName() {
+//     console.log(this.name);
 //   }
 // }
 
-// const car1 = new Car("duster", "renault");
+// const car1 = new Car('duster', 'renault');
 
 //Generic
 //
@@ -411,4 +420,50 @@ const sortByKey1 = <T>(arr: T[], key: keyof T): T[] => {
   return [...arr].sort((a, b) => (a[key] > b[key] ? 1 : -1));
 };
 const res3 = sortByKey<Teacher>(teachers, 'name');
-console.log('res1: ', res1);
+
+
+//fetch data
+// interface IPost {
+//   title: string;
+//   description: string;
+//   id: number;
+// }
+// const fetchData = async <ResponseType>(
+//   path: string
+// ): Promise<ResponseType[]> => {
+//   const res = await fetch(`http://example.com${path}`);
+//   return res.json();
+// };
+
+// (async () => {
+//   const posts = await fetchData<IPost>('/post');
+//   posts[0].id;
+// })();
+
+//structural typing or duck typing
+interface Icred {
+  username: string;
+  password: string;
+}
+function login(cred: Icred) {
+  console.log(cred);
+}
+
+const cred1 = { username: 'abc@test.com', password: 'secret' };
+login(cred1);
+
+//define type of methods
+interface IAuth {
+  username: string;
+  password: string;
+  login(username: string, password: string): void;
+}
+const auth: IAuth = {
+  username: 'abc@test.com',
+  password: 'secret',
+  login(username: string, password: string) {},
+};
+
+//inference: variable automatic taking type of assigned value
+
+console.log('hello world');
